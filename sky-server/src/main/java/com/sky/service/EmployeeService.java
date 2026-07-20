@@ -1,7 +1,10 @@
 package com.sky.service;
 
+import com.sky.constant.StatusConstant;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
+import org.springframework.beans.BeanUtils;
 
 public interface EmployeeService {
 
@@ -11,5 +14,27 @@ public interface EmployeeService {
      * @return
      */
     Employee login(EmployeeLoginDTO employeeLoginDTO);
+
+    /**
+     * 新增员工
+     * @param employeeDTO
+     */
+    public default void save(EmployeeDTO employeeDTO){
+        Employee employee = new Employee();
+
+        //对象属性拷贝
+        BeanUtils.copyProperties(employeeDTO, employee);
+
+        //设置账号的状态，默认正常状态1表示正常，0表示锁定
+        employee.setStatus(StatusConstant.ENABLE);
+
+
+
+
+
+
+        
+
+    }
 
 }
