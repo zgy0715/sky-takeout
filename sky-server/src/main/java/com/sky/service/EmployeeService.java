@@ -22,4 +22,3 @@ public interface EmployeeService {
     void save(EmployeeDTO employeeDTO);
 }
 
-}
