@@ -8,6 +8,8 @@ import com.sky.entity.Employee;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.DigestUtils;
 
+import java.time.LocalDateTime;
+
 public interface EmployeeService {
 
     /**
@@ -31,8 +33,12 @@ public interface EmployeeService {
         employee.setStatus(StatusConstant.ENABLE);
         //设置密码，默认密码是123456
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-
-
+        //设置当前记录的创建时间和修改时间
+        employee.setCreateTime(LocalDateTime.now());
+        employee.setUpdateTime(LocalDateTime.now());
+        //设置当前记录创建人id和修改人id
+        employee.setCreateUser(10L);
+        employee.setUpdateUser(10L);
 
 
 
